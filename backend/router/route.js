@@ -21,7 +21,7 @@ router.put("/api/user/emp/:id", empController.updateEmp);
 router.delete("/api/user/emp/:id", empController.deleteEmp);
 
 //=======================> Payment <====================
-router.post("https://react-crud-v3am.onrender.com/api/payment", razorPay.payment);
-router.post("https://react-crud-v3am.onrender.com/api/payment/verify", razorPay.verifyPayment);
+router.post("/api/payment", razorPay.payment);
+router.post("/api/payment/verify", razorPay.verifyPayment);
 
 module.exports = router;
