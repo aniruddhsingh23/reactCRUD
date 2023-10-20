@@ -369,6 +369,20 @@ $blue: rgba(165, 165, 168, 1);
             }
         }
     }
+
+    .payImg {
+        display: flex;
+        justify-content: center;
+        border: 0.2em solid $blue;
+        width: 25em;
+        height: 15em;
+        align-items: center;
+        margin-left: 39%;
+        margin-bottom: 10%;
+        border-radius: 2em;
+        padding: 5px;
+    }
+
     .payment {
         display: flex;
         justify-content: center;

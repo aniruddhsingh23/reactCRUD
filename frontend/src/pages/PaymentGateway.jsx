@@ -1,82 +1,24 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import payment_img from "../images/payImg.jpg"
 
 const PaymentGateway = () => {
-  const [buy, setBuy] = useState({
-    amount: 10,
-  });
-
-  const handleAmountChange = (event) => {
-    // Update the 'amount' state when the input field changes
-    setBuy({ ...buy, amount: event.target.value });
-  };
-
-  const initPayment = async (data) => {
-    const options = {
-      key: "rzp_test_1OXW88PjbXA5Iu",
-      amount: buy.amount * 100, // Use the 'amount' from state
-      currency: "INR",
-      description: "Test Transaction",
-      order_id: data.id,
-      handler: async (response) => {
-        try {
-          const verifyUrl = "https://react-crud-jss3.onrender.com/api/payment/verify";
-          const { data } = await axios.post(verifyUrl, response);
-          console.log(data);
-        } catch (error) {
-          console.log(error);
-        }
-      },
-      theme: {
-        color: "#3399cc",
-      },
-    };
-    const rzp1 = new window.Razorpay(options);
-    rzp1.open();
-  };
-
-  const handlePayment = async () => {
-    try {
-      const orderUrl = "https://react-crud-jss3.onrender.com/api/payment";
-      const response = await axios.post(orderUrl, { amount: buy.amount });
-      const data = response.data;
-      initPayment(data.data);
-    } catch (error) {
-      console.error("Error while initiating payment:", error);
-      // Handle the error further or display a user-friendly message.
-    }
-  };
-  
 
   return (
     <div>
-      <h2 data-aos="slide-down" style={{ display: "flex", justifyContent: "center", marginBottom: "2em", marginTop: "5em" }}>
+      <h2 data-aos="slide-down" style={{ display: "flex", justifyContent: "center", marginBottom: "2em", marginTop: "5em", marginLeft: "70px" }}>
         If you like our work, Please Donate
       </h2>
-      <div className='payment' data-aos="zoom-in">
-        <div className='pymnt-container'>
-          <p className='pymnt-price'>
-            Donate : <span> &#x20B9; {buy.amount} </span>
-          </p>
-          <input
-            type="number"
-            value={buy.amount}
-            onChange={handleAmountChange}
-            placeholder="Enter Amount"
-            style={{
-              padding: '10px',
-              border: '0.1em solid rgba(165, 165, 168, 1)',
-              borderRadius: '0.8em',
-              fontSize: '14px',
-              outline: 'none',
-              width: '180px' 
-              }}
-            />
-
-          <button onClick={handlePayment} className="dnt-btn">
-            Donate
-          </button>
-        </div>
+      <div className='payImg'>
+        <img 
+          src={payment_img}
+          alt="Logo"
+          style={{
+            height: "100%",
+            width: "100%",
+            border: "0.2em solid $blue",
+            borderRadius: "2em"
+          }}
+        />
       </div>
     </div>
   );
