@@ -63,7 +63,16 @@ const PaymentGateway = () => {
             value={buy.amount}
             onChange={handleAmountChange}
             placeholder="Enter Amount"
-          />
+            style={{
+              padding: '10px',
+              border: '0.1em solid rgba(165, 165, 168, 1)',
+              borderRadius: '0.8em',
+              fontSize: '14px',
+              outline: 'none',
+              width: '180px' 
+              }}
+            />
+
           <button onClick={handlePayment} className="dnt-btn">
             Donate
           </button>
